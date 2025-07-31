@@ -10,3 +10,11 @@ pipeline:
     commands:
       - dotnet test TechStorage.Tests/TechStorage.Tests.csproj --no-build --verbosity normal
 
+  deploy:
+    image: alpine
+    volumes:
+      - /path/on/agent/host/myapp:/deploy
+    commands:
+      - cp -r ./publish/* /deploy/
+      - echo "Deployed files to /deploy on the agent host"
+
