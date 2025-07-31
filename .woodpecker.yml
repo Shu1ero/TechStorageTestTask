@@ -1,0 +1,12 @@
+pipeline:
+  build:
+    image: mcr.microsoft.com/dotnet/sdk:7.0
+    commands:
+      - dotnet restore TechStorage.sln
+      - dotnet build TechStorage.sln --configuration Release --no-restore
+
+  test:
+    image: mcr.microsoft.com/dotnet/sdk:7.0
+    commands:
+      - dotnet test TechStorage.Tests/TechStorage.Tests.csproj --no-build --verbosity normal
+
